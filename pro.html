@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p id="msg">....</p>
+
+<ul id="list"></ul>
+
+
+<script>
+    // 有一个异步任务-耗时，完成之后，再完成某个任务，thenable
+    //立即执行函数
+    (function(){
+        const list =document.querySelector('#list');
+        //先取数据，添加到ul上
+        fetch('http://localhost:3000/students')
+            //二进制流
+            .then(res=>res.json())
+            .then(res=>{
+                //等待异步任务，再执行
+                //  console.log(res);
+                res.forEach(item=>{
+                    list.innerHTML+=
+                    `
+                    <li> ${item.title}<li/>
+                    `
+                })
+            });
+        list.innerHTML +=
+        `
+        <li>
+            文章一篇
+        <li>
+        `;
+        console.log(1);
+    })()
+</script>
+</body>
+</html>
