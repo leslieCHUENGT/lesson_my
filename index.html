@@ -2,63 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
-    </script>
-    <link rel="stylesheet" href="studentInformationManagementSystemCss/studentInformationManagementSystem.css">
-    <script src="studentInformationManagementSystemJs/studentInformationManagementSystem.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- link -->
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="./btn.css">
 </head>
 <body>
-<div>
-    <main>
-        <div>
-            <table>
-                <tbody>
-                <tr id="thead">
-                    <td><input type="checkbox"></td>
-                    <td>id</td>
-                    <td>用户名称</td>
-                    <td>用户实名</td>
-                    <td>性别</td>
-                    <td>模型选择</td>
-                    <td>是否管理员</td>
-                    <td></td>
-                    <td></td>
-                    <td>操作</td>
-                </tr>
-             
-                </tbody>
-            </table>
-            <div id="navigate">
-                <p>第<span id="pgn"></span>页,共<span id="en"></span>条 (每页最多显示10条)</p><!--Number of entries-->
-                <div id="tpbt">
-                    <button class="gre" id="lastpage">上一页</button>
-                    <button class="red" id="nextpage">下一页</button>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-<div id="sbg"></div><!--增删改查时的阴影背景-->
-<div class="achaesi" id="chasi">
-<!--    <form action="" method="post">-->
-    <h2>用户信息</h2>
-    <div class="ifm">
-        <div><label for="chassn">用户名称</label> <input id="chassn" type="text" readonly required="required" maxlength="11" pattern="^[0-9]{11}$" oninvalid="setCustomValidity('请输入11位的数字组合')"></div>
-        <div><label for="chasn">用户实名</label> <input id="chasn" type="text" required="required" minlength="2" maxlength="8" pattern="^[\u4e00-\u9fa5]+$" oninvalid="setCustomValidity('请输入正确的姓名')"></div>
-        <div><label for="chasac">密码</label> <input id="chasac" type="text" required="required" minlength="3" maxlength="10" pattern="^[\u4e00-\u9fa5]+$" oninvalid="setCustomValidity('请输入正确的学院名')"></div>
-        <p>密码不需要改请本项留空</p>
-        <div><label for="chasm">密码确认</label> <input id="chasm" type="text" required="required" minlength="3" maxlength="12" pattern="^[\u4e00-\u9fa5]+$" oninvalid="setCustomValidity('请输入正确的专业名')"></div>
-        <p>密码不需要改请本项留空</p>
-        <div><label for="chasg">性别</label><input type="radio" name="sex" value="male" checked>Male<input type="radio" name="sex" value="female">Female</div>
-        <div><label for="chasc">头像</label> <input id="chasc" type="text" required="required" maxlength="1"></div>
-        <div><label for="chasag">是否管理员</label> <input id="chasag" type="text" required="required" min="0" maxlength="2" pattern="^[0-9]+$" oninvalid="setCustomValidity('请输入正确的年龄')"></div>
-    </div>
-    <hr/>
-    <div class="scbt">
-        <button type="submit" id="save">保存信息</button>
-        <button class="cancel">关闭窗口</button>
-    </div>
-<!--    </form>-->
-</div>
+    <!--a.weui-btn-->
+    <!-- css 选择器的方式 -->
+    <!-- 按钮类 -->
+    <a href="javascript" class="weui-btn weui-btn_primary">按钮</a>
 </body>
 </html>
