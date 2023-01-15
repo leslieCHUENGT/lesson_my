@@ -1,34 +1,25 @@
-var stuA = {
-    name:'蔡总',
+var arr = [1, [2, [3, 4]], 5];
+// 递归
 
-};
-
-var stuB = {
-    name:'刘总',
-
-};
-
-
-function sayHi(...args){
-    console.log(arguments,args,...args);
-    console.log(`你好，我是${this.name}`)
+function flatten(arr) {
+    var result = [];
+    for (var i = 0, len = arr.length; i < len; i++) {
+        if (Array.isArray(arr[i])) {
+            result = result.concat(flatten(arr[i]))
+        } else {
+            result.push(arr[i]);
+        }
+    }
+    return result;
 }
 
-// stuA,stuB都能sayHi
+// [1,2,3,4,5]
+console.log(flatten(arr));
 
-// sayHi().call(stuB);
-// sayHi().call(stuA);
+// [1,2,3,4,5]
+console.log(flatten(arr));
 
-// Object.prototype.sayHi = sayHi;
-
-// sayHi.apply(stuB);
-
-// stuA.sayHi()
-
-sayHi.apply(stuB,[1,2]);
-sayHi.call(stuB,1,2);//call将参数一个一个传，apply以数组来传
-
-// var func = sayHi.bind(stuB)//bind不会立即执行，在函数运行时执行
-// func();
-
-// sayHi.bind(stuB)();
+function flatten1(arr) {
+    return arr.toString().split(', ').map(item => +item)
+}
+console.log (flatten1(arr));
