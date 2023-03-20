@@ -1,25 +1,19 @@
-var arr = [1, [2, [3, 4]], 5];
-// 递归
+//启动http服务基于请求到响应 为了资源
+const Koa = require('koa')
+const route = require('koa-route')
+const app = new Koa();
 
-function flatten(arr) {
-    var result = [];
-    for (var i = 0, len = arr.length; i < len; i++) {
-        if (Array.isArray(arr[i])) {
-            result = result.concat(flatten(arr[i]))
-        } else {
-            result.push(arr[i]);
-        }
-    }
-    return result;
+const about = ctx => {
+    ctx.response.type = 'html';
+    ctx.response.body = '<a href="/">Index Page</a>';
 }
 
-// [1,2,3,4,5]
-console.log(flatten(arr));
-
-// [1,2,3,4,5]
-console.log(flatten(arr));
-
-function flatten1(arr) {
-    return arr.toString().split(', ').map(item => +item)
+const main = ctx => {
+    ctx.response.body = 'hello world'
 }
-console.log (flatten1(arr));
+
+app.use(route.get('/', main)) // 路由中间件
+app.use(route.get('/about', about))
+app.listen(3333)
+
+
