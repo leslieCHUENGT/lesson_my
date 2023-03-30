@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+<script>
+//eventloop callback 回调地狱 
+//es5只能使用回调函数，解决异步问题
+//为了代码可读性，因为代码的编写顺序和执行顺序不一致 
+//同步等待几秒钟 sleep
+//es6 Promise thenable-> generator -> js 大型语言 其他语言开发者友好 async await
+const time = (timer) => {
+    return new Promise(resolve => {
+        setTimeout(()=>{
+            resolve();
+        }, timer);
+    })
+}
+//马上把.then压入一个数组
+const _ajax = () => time(2000).then(()=>{
+    console.log(1)
+    return 1
+})
+const __ajax = () => time(1000).then(()=>{
+    console.log(2)
+    return 2
+})
+const ___ajax = () => time(3000).then(()=>{
+    console.log(3)
+    return 3
+})
+function mergePromise(ajaxArray){
+    const data = [];
+    let promise = new Promise.resolve();//静态方法
+    ajaxArray.forEach(ajax=>{
+        promise = promise.then(ajax).then(res=>{
+            data.push(res);
+            return data; 
+        })
+    })
+    return promise
+}
+//并发 最大三秒
+mergePromise([ajax1,ajax2,ajax3]).then(data=>{
+    console.log('done')
+    console.log(data)//按顺序收集数组的结果 [1,2,3]
+}) 
+</script>
+</body>
+</html>
