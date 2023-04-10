@@ -15,4 +15,7 @@ const findTargetSumWays = (nums, target) => {
     }
     return dp[halfSum];
 };
-findTargetSumWays([1,1,1,1,1],3)
+findTargetSumWays([1, 1, 1, 1, 1], 3)
+
+
+
