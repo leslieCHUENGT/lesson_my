@@ -1,8 +1,12 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import './mock/index'
-import 'lib-flexible/flexible'
+import { effect, reactive } from "./reactivity";
+// import { effect, reactive } from "./reactivity";
 
-const app = createApp(App)
-app
-    .mount('#app')
+const obj = reactive({a:1})
+effect(() => {
+    const val = obj.a
+    console.log(val)
+
+})
+setTimeout(() => {
+    obj.a++
+}, 1000)
