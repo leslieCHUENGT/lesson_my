@@ -1,76 +1,64 @@
-import { template } from 'lodash'
+import { h,Fragment } from './h'
 
-// const compiler = template('<h1><%= title %><h1>')
-// const html = compiler({title:'My Component'})
 
-// document.getElementById('app').innerHTML = html
+const elementVNode = h('input', {
+    class: 'cls-a',
+    type: 'checkbox',
+    checked: true,
+    custom: '1'
+})
 
-// setTimeout(() => {
-//     const html2 = compiler({ 字节大神 })
-//     document.getElementById('app').innerHTML = html2
 
-// },2000)
 
-// props 数据参数
-// const MyComponent = props => {
-//     const compiler = MyComponent.cache || (MyComponent.cache = template('<h1><%= title %><h1>'))
-//     return compiler(props)
+
+
+
+
+
+// 动态类名
+// const dynamicClass = ['class-b', 'class-c']
+// const elementVNode = h('div', {class:['class-a',...dynamicClass]})
+// render(elementVNode, document.getElementById('app'))
+
+
+// const elementVNode = h(
+//     'div',
+//     {
+//         style: {
+//             height: '100px',
+//             with: '100px',
+//             background:'red'
+//         }
+//     },
+//     h('div',
+//         {
+//             style: {
+//                 height: '100px',
+//                 with: '100px',
+//                 background:'red'
+//             }
+//         }
+//     )
+// )
+// // console.log(elementVNode)
+// render(elementVNode, document.getElementById('app'))
+
+
+
+// const elementWithTextVNode = h('div', null, '我是文本')
+// console.log(elementWithTextVNode)
+
+// const fragmentVNode = h(Fragment, null, [h('span'), h('span')])
+// console.log(fragmentVNode)
+
+// function MyFunctionalComponent() {
+    
 // }
-// MyComponent.cache = null
-// document.getElementById('app').innerHTML = MyComponent({ title: 'MyComponent' })
 
+// const functionalComponentVNode = h(MyFunctionalComponent,null,h('div'))
+// console.log(functionalComponentVNode)
 
-// MyComponent 组件
-class MyComponent {
-  render() {
-    // render 函数产出 VNode
-    return {
-      tag: 'div'
-    }
-  }
-}
+// class MyStatefulComponent extends Component{
 
-// VNode
-const componentVnode = {
-  tag: MyComponent
-}
-
-// 渲染
-render(componentVnode, document.getElementById('app'))
-
-function render(vnode, container) {
-  if (typeof vnode.tag === 'string') {
-    // html 标签
-    mountElement(vnode, container)
-  } else {
-    // 组件
-    mountComponent(vnode, container)
-  }
-}
-
-function mountComponent(vnode, container) {
-  // 创建组件实例
-  const instance = new vnode.tag() // new MyComponent
-  // 渲染
-  instance.$vnode = instance.render()
-  // 挂载
-  render(instance.$vnode, container)
-}
-
-function mountElement(vnode, container) {
-  // 创建元素
-  const el = document.createElement(vnode.tag)
-  // 将元素添加到容器
-  container.appendChild(el)
-}
-
-
-
-
-
-
-
-
-
-
-
+// }
+// const statefulComponentVNode = h(MyStatefulComponent,null,h('div'))
